@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<map proto="1.4.2">
+	<name>Hype Train</name>
+	<version>1.2.1</version>
+	<objective>Get Hyped!</objective>
+	<rules>
+		<rule>THERE ARE NO STOPS ON THE HYPE HYPE HYPE HYPE HYPE HYPE TRAIN!</rule>
+		<rule>amactus must crash the server</rule>
+	</rules>
+	<authors>
+		<author uuid="e5eea785-51c1-40fe-a2d0-f83d4c035cd9"/>
+	</authors>
+	<contributors>
+		<contributor uuid="df5fd9f4-4840-4293-9346-5c77bf7bc08f" contribution="Hype"/>
+		<contributor contribution="Drinks">moo88888888</contributor>
+		<contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06" contribution="Helped"/>
+		<contributor uuid="2ac8e13b-6edc-4a06-a556-b1bd3c66486d" contribution="Putting his head all over the place (If you see one of his heads, tell me so I can remove it"/>
+		<contributor uuid="2cef6d05-ec9a-44b3-bedc-53359c68ae65" contribution="XML update"/>
+		<contributor uuid="715769c5-8c4c-4489-bdf8-f9cee2b2ae8a" contribution="Breaking it"/>
+		<contributor uuid="fe19a0fe-5961-46e1-b98e-b2b6658f8ba2" contribution="Breaking it as well"/>
+	</contributors>
+	<players min="1" max="50" colors="true"/>
+	<disabledamage>
+		<damage>fall</damage>
+		<damage>entity attack</damage>
+	</disabledamage>
+	<timelock>on</timelock> 
+	<time>7200</time>
+	<kits>
+		<kit id="hype">
+			<!-- Potion effects to allow player to move about the train more easily -->
+			<potion duration="oo" amplifier="8">jump</potion>
+			<potion duration="oo" amplifier="2">speed</potion>
+			<potion duration="oo" amplifier="1">night vision</potion>
+			<!-- Allows 1.7.2 users to remove the night vision effect. There are potions which allow players to still have jump boost and speed in a chest -->
+			<item slot="8" name="`9`lMuscle Milk" lore="`5`oDirnk this if you are using 1.7.2!">335</item>
+		</kit>
+	</kits>
+	<spawns>
+		<spawn kit="hype">
+			<regions yaw="-90" pitch="90"><cuboid id="players-spawn" min="-15.5,130,3.5" max="-19.5,130,-0.5"/></regions>
+		</spawn>
+	
+		<default yaw="0">
+			<cuboid min="-23.5,64,-13.5" max="-15.5,64,-12.5"/>
+		</default>
+	</spawns>
+	<filters>
+		<all id="glass-and-tnt">
+			<any>
+				<material>tnt</material>
+				<material>glass</material>
+			</any>
+		</all>
+	</filters>
+	<tnt>
+		<blockdamage>off</blockdamage>
+		<instantignite>on</instantignite>
+	</tnt>
+	<regions>
+		<rectangle name="map" min="-oo,-oo" max="oo,oo"/>
+		
+		<apply block="glass-and-tnt" message="You may only place TNT and break glass"/>
+	</regions>
+	<itemremove>
+		<item>glass bottle</item>
+	</itemremove>
+</map>

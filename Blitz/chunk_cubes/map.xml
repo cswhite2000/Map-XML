@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<map proto="1.4.2">
+<name>Chunk Clash !BETA!</name>
+<version>1.0.0</version>
+<objective>Kill the other teams members to win</objective>
+<!-- Map authors & contributors. -->
+<authors>
+    <author uuid="5198dc37-537f-4ea5-8ee8-1e0952d4a36b"/> <!-- _3Each -->
+</authors>
+<!-- Map modules, i.e. objectives, regions, spawns. -->
+<gamemode>ffa</gamemode>
+<gamemode>blitz</gamemode>
+<!-- Teams.Each team has 1 player but can be increased by staff. -->
+<teams>
+   <team id="red-team" color="dark red" max="1" max-overfill="1">Red</team>
+   <team id="blue-team" color="blue" max="1" max-overfill="1">Blue</team>
+   <team id="purple-team" color="light purple" max="1" max-overfill="1">Purple</team>
+   <team id="gold-team" color="gold" max="1" max-overfill="1">Gold</team>
+</teams>
+<!-- Each player has 1 life -->
+<blitz>
+    <lives>1</lives>
+    <broadcastLives>false</broadcastLives>
+</blitz>
+<!-- Time till the match ends in minutes.aka 40 minutes -->
+<time>40m</time>
+<include src="blitz-global.xml"/>
+<!-- Where players/teams spawn. -->
+<spawns>
+    <spawn team="red-team">
+        <regions yaw="90">
+            <cuboid min="-66,171,-755" max="-66,171,-755"/>
+        </regions>
+    </spawn>
+    <spawn team="blue-team">
+        <regions yaw="90">
+            <cuboid min="-168,171,-853" max="-168,171,-853"/>
+        </regions>
+    </spawn>
+    <spawn team="purple-team">
+        <regions yaw="90">
+            <cuboid min="-266,171,-752" max="-266,171,-752"/>
+        </regions>
+    </spawn>
+    <spawn team="gold-team">
+        <regions yaw="90">
+            <cuboid min="-165,170,-654" max="-165,170,-654"/>
+        </regions>
+    </spawn>
+    <default>
+        <regions yaw="0">
+            <cuboid min="-166,107,-754" max="-167,107,-753"/>
+        </regions>
+    </default>
+</spawns>
+<!-- Some map settings, i.e daylight cycle -->
+<gamerules>
+    <doDaylightCycle>true</doDaylightCycle>
+    <doFireTick>true</doFireTick>
+    <doTileDrops>true</doTileDrops>
+    <mobGriefing>true</mobGriefing>
+    <doMobLoot>true</doMobLoot>
+</gamerules>
+<!-- mobs are enabled. -->
+<mobs>
+    <filter>
+        <spawn>natural</spawn>
+    </filter>
+</mobs>
+<!-- no kits are needed as it is a survival map. -->
+</map>

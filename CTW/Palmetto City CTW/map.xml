@@ -1,0 +1,316 @@
+<map proto="1.4.2">
+	<name>Palmetto City CTW</name>
+	<version>1.0.0</version>
+	<objective>Capture and return the other teams' wools</objective>
+	<authors>
+		<author uuid="96f9aa16-9c93-4b1d-9bce-18b8c212074b"/>
+			<!-- _ArmyFrog -->
+	</authors>
+	<contributors>
+		<contributor uuid="9225421c-3c09-4d97-bb80-f6a77c1f360b" contribution="XML Guide"/>
+			<!-- Jexel -->
+	</contributors>
+	<gamemode>ctw</gamemode>
+	<teams>
+		<team id="blue-team" max="20" color="blue">Blue Team</team>
+		<team id="green-team" max="20" color="green">Green Team</team>
+		<team id="yellow-team" max="20" color="yellow">Yellow Team</team>
+		<team id="red-team" max="20" color="red">Red Team</team>
+	</teams>
+	<kits>
+		<kit id="spawn">
+			<item slot="0" unbreakable="true">stone sword</item>
+			<item slot="1" enchantment="arrow infinite:1" unbreakable="true">bow</item>
+			<item slot="2" enchantment="dig speed:3" unbreakable="true">iron pickaxe</item>
+			<item slot="3" enchantment="dig speed:3" unbreakable="true">iron axe</item>
+			<item slot="4" amount="64" damage="3">wood</item>
+			<item slot="5" amount="64" damage="3">leaves</item>
+			<item slot="6" amount="1">bucket</item>
+			<item slot="7" amount="64" damage="1">cooked_fish</item>
+			<item slot="8" amount="4">web</item>
+			<item slot="28" amount="1">arrow</item>
+			<item slot="30" unbreakable="true">iron spade</item>
+			<item slot="34" amount="1">golden apple</item>
+			<potion duration="5">heal</potion>
+			<potion duration="5">damage resistance</potion>
+		</kit>
+		<kit id="blue" parents="spawn">
+			<helmet color="3A5CA5" unbreakable="true">leather helmet</helmet>
+			<chestplate enchantment="protection projectile:2" color="3A5CA5" unbreakable="true">leather chestplate</chestplate>
+			<boots enchantment="protection fall:2" color="3A5CA5" unbreakable="true">leather boots</boots>
+		</kit>
+		<kit id="green" parents="spawn">
+			<helmet color="5F9909" unbreakable="true">leather helmet</helmet>
+			<chestplate enchantment="protection projectile:2" color="5F9909" unbreakable="true">leather chestplate</chestplate>
+			<boots enchantment="protection fall:2" color="5F9909" unbreakable="true">leather boots</boots>
+		</kit>
+		<kit id="yellow" parents="spawn">
+			<helmet color="C6AB18" unbreakable="true">leather helmet</helmet>
+			<chestplate enchantment="protection projectile:2" color="C6AB18" unbreakable="true">leather chestplate</chestplate>
+			<boots enchantment="protection fall:2" color="C6AB18" unbreakable="true">leather boots</boots>
+		</kit>
+		<kit id="red" parents="spawn">
+			<helmet color="C4193E" unbreakable="true">leather helmet</helmet>
+			<chestplate enchantment="protection projectile:2" color="C4193E" unbreakable="true">leather chestplate</chestplate>
+			<boots enchantment="protection fall:2" color="C4193E" unbreakable="true">leather boots</boots>
+		</kit>
+	</kits>
+	<spawns>
+		<spawn yaw="135" kit="blue" team="blue-team">
+			<region>
+				<cuboid max="74,6,71" min="70,4,75"/>
+			</region>
+		</spawn>
+		<spawn yaw="45" kit="green" team="green-team">
+			<region>
+				<cuboid max="71,6,-74" min="75,4,-70"/>
+			</region>
+		</spawn>
+		<spawn yaw="-45" kit="yellow" team="yellow-team">
+			<region>
+				<cuboid max="-74,6,-71" min="-70,4,-75"/>
+			</region>
+		</spawn>
+		<spawn yaw="-135" kit="red" team="red-team">
+			<region>
+				<cuboid max="-71,6,74" min="-75,4,70"/>
+			</region>
+		</spawn>
+		<default>
+			<region>
+				<cuboid max="3,57,3" min="-3,59,-3"/>
+			</region>
+		</default>
+	</spawns>
+	<gamerules>
+		<doDaylightCycle>true</doDaylightCycle>
+	</gamerules>
+	<portals>
+		<portal y="10">
+			<region><cuboid min="68,2,69" max="69,3,70"/></region>
+		</portal>
+		<portal y="10">
+			<region><cuboid min="69,2,-68" max="70,3,-69"/></region>
+		</portal>
+		<portal y="10">
+			<region><cuboid min="-68,2,-69" max="-69,3,-70"/></region>
+		</portal>
+		<portal y="10">
+			<region><cuboid min="-69,2,68" max="-70,3,69"/></region>
+		</portal>
+	</portals>
+	<filters>
+		<any id="allow-gold">
+			<material>gold block</material>
+				<!-- Only gold blocks may be broken at spawn -->
+		</any>
+		<deny id="deny-world">
+			<cause>world</cause>
+		</deny>
+		<deny id="disable">
+			<cause>player</cause>
+		</deny>
+		<team id="only-blue">blue-team</team>
+		<team id="only-green">green-team</team>
+		<team id="only-yellow">yellow-team</team>
+		<team id="only-red">red-team</team>
+		<not id="deny-blue">
+			<team>blue-team</team>
+		</not>
+		<not id="deny-green">
+			<team>green-team</team>
+		</not>
+		<not id="deny-yellow">
+			<team>yellow-team</team>
+		</not>
+		<not id="deny-red">
+			<team>red-team</team>
+		</not>
+		<deny id="deny-wool">
+			<material>wool</material>
+				<!-- Wools cannot be placed anywhere except for wool monuments -->
+		</deny>
+		<not id="antivoid">
+			<void/>
+		</not>
+	</filters>
+	<regions>
+		<apply message="`eYou may only break gold blocks at spawn!" block-place="never" block-break="allow-gold">
+			<region>
+				<union id="spawns">
+					<rectangle min="55,75" max="74,56"/>
+					<circle center="72,73" radius="9"/>
+					<rectangle min="75,-55" max="56,-74"/>
+					<circle center="73,-72" radius="9"/>
+					<rectangle min="-55,-75" max="-74,-56"/>
+					<circle center="-72,-73" radius="9"/>
+					<rectangle min="-75,55" max="-56,74"/>
+					<circle center="-73,72" radius="9"/>
+				</union>
+			</region>
+		</apply>
+		<apply enter="disable" message="`eYou may not modify the center of the map!" block-place="never" block-break="never">
+			<region>
+				<rectangle min="3,3" max="-3,-3"/>
+			</region>
+		</apply>
+		<apply message="`eWools may only be placed on monuments!" block-place="deny-wool" region="everywhere" block="deny-world"/>
+		<apply block-place="always" block-break="always">
+			<region>
+				<rectangle id="allow-all" min="74,75" max="-74,-75"/>
+			</region>
+		</apply>
+		<apply enter="deny-blue" message="`eYou may not enter your own wool room!">
+			<region>
+				<cuboid id="blue-wool" min="114,9,86" max="137,33,70"/>
+			</region>
+		</apply>
+		<apply enter="deny-green" message="`eYou may not enter your own wool room!">
+			<region>
+				<cuboid id="green-wool" min="86,9,-114" max="70,33,-137"/>
+			</region>
+		</apply>
+		<apply enter="deny-yellow" message="`eYou may not enter your own wool room!">
+			<region>
+				<cuboid id="yellow-wool" min="-114,9,-86" max="-137,33,-70"/>
+			</region>
+		</apply>
+		<apply enter="deny-red" message="`eYou may not enter your own wool room!">
+			<region>
+				<cuboid id="red-wool" min="-86,9,114" max="-70,33,137"/>
+			</region>
+		</apply>
+		<apply enter="only-blue" message="`eYou may not enter the blue's spawn island!">
+			<region>
+				<union id="blue-spawn">
+					<rectangle min="55,56" max="88,81"/>
+					<rectangle min="89,75" max="102,78"/>
+				</union>
+			</region>
+		</apply>
+		<apply enter="only-green" message="`eYou may not enter the green's spawn island!">
+			<region>
+				<union id="green-spawn">
+					<rectangle min="56,-55" max="81,-88"/>
+					<rectangle min="75,-89" max="78,-102"/>
+				</union>
+			</region>
+		</apply>
+		<apply enter="only-yellow" message="`eYou may not enter the yellow's spawn island!">
+			<region>
+				<union id="yellow-spawn">
+					<rectangle min="-55,-56" max="-88,-81"/>
+					<rectangle min="-89,-75" max="-102,-78"/>
+				</union>
+			</region>
+		</apply>
+		<apply enter="only-red" message="`eYou may not enter the red's spawn island!">
+			<region>
+				<union id="red-spawn">
+					<rectangle min="-56,55" max="-81,88"/>
+					<rectangle min="-75,89" max="-78,102"/>
+				</union>
+			</region>  
+		</apply>
+		<apply block="antivoid" message="`eYou may not edit wool rooms, bridges, or void areas!">
+			<negative>
+				<region name="void"/>
+			</negative>
+		</apply>
+	</regions>    
+	<renewables>
+		<renewable sound="true" rate="0.5">
+			<region>
+				<cylinder name="Center" height="57" radius="11" base="0,1,0"/>
+			</region>
+			<renew-filter>
+				<material>emerald ore</material>
+			</renew-filter>
+			<replace-filter>
+				<material>air</material>
+			</replace-filter>
+		</renewable>
+			<!-- Respawns emeralds for enchanting at the center of the map -->
+	</renewables>
+	<wools>
+		<wool team="blue-team" color="green" location="78,10,-121" craftable="false">
+			<monument><block>75,12,70</block></monument>
+		</wool>
+		<wool team="blue-team" color="yellow" location="-121,10,-78" craftable="false">
+			<monument><block>75,12,76</block></monument>
+		</wool>
+		<wool team="blue-team" color="red" location="-78,10,121" craftable="false">
+			<monument><block>69,12,76</block></monument>
+		</wool>
+		<wool team="green-team" color="blue" location="121,10,78" craftable="false">
+			<monument><block>76,12,-69</block></monument>
+		</wool>
+		<wool team="green-team" color="yellow" location="-121,10,-78" craftable="false">
+			<monument><block>70,12,-75</block></monument>
+		</wool>
+		<wool team="green-team" color="red" location="-78,10,121" craftable="false">
+			<monument><block>76,12,-75</block></monument>
+		</wool>
+		<wool team="yellow-team" color="blue" location="121,10,78" craftable="false">
+			<monument><block>-75,12,-76</block></monument>
+		</wool>
+		<wool team="yellow-team" color="green" location="78,10,-121" craftable="false">
+			<monument><block>-69,12,-76</block></monument>
+		</wool>
+		<wool team="yellow-team" color="red" location="-78,10,121" craftable="false">
+			<monument><block>-75,12,-70</block></monument>
+		</wool>
+		<wool team="red-team" color="blue" location="121,10,78" craftable="false">
+			<monument><block>-70,12,75</block></monument>
+		</wool>
+		<wool team="red-team" color="green" location="78,10,-121" craftable="false">
+			<monument><block>-76,12,75</block></monument>
+		</wool>
+		<wool team="red-team" color="yellow" location="-121,10,-78" craftable="false">
+			<monument><block>-76,12,69</block></monument>
+		</wool>
+	</wools>
+	<maxbuildheight>44</maxbuildheight>
+	<killreward>
+		<item amount="1">golden apple</item>
+		<item amount="3" damage="4">ink_sack</item>
+		<item amount="3">iron_ingot</item>
+			<!-- Kills are rewarded with the ability to enchant and make iron gear -->
+	</killreward>
+	<itemremove>
+		<item>leather_helmet</item>
+		<item>leather_chestplate</item>
+		<item>leather_boots</item>
+		<item>stone sword</item>
+		<item>bow</item>
+		<item>iron pickaxe</item>
+		<item>iron axe</item>
+		<item>bucket</item>
+		<item>arrow</item>
+		<item>iron spade</item>
+		<item>log:3</item>
+		<item>wood:3</item>
+		<item>smooth_brick</item>
+		<item>smooth_brick:1</item>
+		<item>smooth_brick:2</item>
+		<item>smooth_brick:3</item>
+		<item>dirt</item>
+		<item>cobblestone</item>
+		<item>mossy_cobblestone</item>
+		<item>gravel</item>
+		<item>flint</item>
+   		<item>note_block</item>
+		<item>glowstone_dust</item>
+		<item>anvil:2</item>
+		<item>jungle_fence</item>
+		<item>nether_fence</item>
+		<item>wood_step:3</item>
+		<item>wood_step:1</item>
+		<item>jungle_wood_stairs</item>
+		<item>nether_brick_stairs</item>
+		<item>sapling:3</item>
+		<item>emerald</item>
+		<item>emerald_block</item>
+			<!-- Breaking most blocks yeilds nothing -->
+	</itemremove>			
+</map>

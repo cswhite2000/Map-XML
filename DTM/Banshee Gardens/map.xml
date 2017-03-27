@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<map proto="1.4.2" game="Gardens">
+<name>Banshee Gardens</name>
+<slug>banshee_gardens</slug>
+<version>1.3.5</version>
+<objective>Destroy a 90% of the enemy Garden</objective>
+<phase>development</phase>
+<edition>standard</edition>
+<gamemode>dtm</gamemode>
+<gamemode>arcade</gamemode>
+<rules>
+	<rule>Fall Damage is disabled</rule>
+</rules>
+<authors>
+	<author uuid="2cef6d05-ec9a-44b3-bedc-53359c68ae65" contribution="Concept, Design, Construction and XML"/> <!--BGM-->
+</authors>
+<contributors>
+	<contributor uuid="9b5dc000-c120-4737-9473-76d6816a0dc9" contribution="Testing and Features"/> <!--pikpikpikpik-->
+</contributors>
+<teams>
+	<team id="red" color="dark red" min="1" max="3">Red</team>
+	<team id="silver" color="gray" min="1" max="3">Silver</team>
+</teams>
+<kits>
+	<kit id="everyone" force="true">
+		<item slot="0" name="`c`lCannon Stick" locked="true" projectile="bgm" material="stick"/>
+		<item slot="1" name="`0`lBanshee Souls Gun" locked="true" projectile="bgm1" material="blaze rod"/>
+		<chestplate enchantment="protection explosions:4" unbreakable="true">gold chestplate</chestplate>
+		<potion duration="oo" amplifier="1">speed</potion>
+		<potion duration="3">night vision</potion>
+		<potion duration="0.5">blindness</potion>
+		<potion duration="4" amplifier="1">confusion</potion>
+		<double-jump recharge-time="5s"/>
+	</kit>
+</kits>
+<spawns>
+	<spawn team="red" safe="true" kit="everyone" filter="spawn-time">
+		<region yaw="0">
+			<union>
+				<cylinder base="105.5,0,-747.5" radius="4.5" height="75"/>
+				<cuboid min="99.5,0,-748.5" max="32.5,74,-746.5"/>
+			</union>
+		</region>
+	</spawn>
+	<spawn team="silver" safe="true" kit="everyone" filter="spawn-time">
+		<region yaw="180">
+			<union>
+				<cylinder base="105,0,-726.5" radius="4.5" height="75"/>
+				<cuboid min="32.5,74,-725.5" max="99.5,72,-727.5"/>
+			</union>
+		</region>
+	</spawn>
+	<default>
+		<region yaw="45">
+			<point>96.5,89,-784.5</point>
+		</region>
+	</default>
+</spawns>
+<regions>
+	<rectangle id="everything" min="oo,oo" max="-oo,-oo"/>
+	<rectangle id="lobby" min="83.5,-775.5" max="112.5,-803.5"/>
+	<apply block="never" message="You may not destroy the Observer's Spawn" region="lobby"/>
+</regions>
+<filters>
+	<time id="spawn-time">2s</time>
+</filters>
+<destroyables owner="red" materials="grass;log;159;126;134;188" show-progress="true" completion="90%" repairable="true" sparks="true">
+	<destroyable name="Garden">
+		<region>
+			<cuboid min="27.5,80,-743.5" max="112.5,0,-757.5"/>
+		</region>
+	</destroyable>
+</destroyables>
+<destroyables owner="silver" materials="grass;log;159;126;134;188" show-progress="true" completion="90%" repairable="true" sparks="true">
+	<destroyable name="Garden">
+		<region>
+			<cuboid min="117.5,0,-735.5" max="27.5,84.5,-717.5"/>
+		</region>
+	</destroyable>
+</destroyables>
+<projectiles>
+	<projectile
+		id="bgm"
+		name="`c`lCannon Stick"
+		projectile="TNTPrimed"
+		velocity="1.5"
+		damage="2"
+		throwable="false"
+	/>	
+</projectiles>
+<projectiles>
+    <projectile
+        id="bgm1"
+        name="`0`lBanshee Souls Gun"
+        projectile="WitherSkull"
+        velocity="0.05"
+        damage="100"
+        throwable="false"
+		cooldown="0.5"
+	/>
+</projectiles>
+<itemremove>
+	<item>gold chestplate</item>
+	<item>log</item>
+	<item>dirt</item>
+	<item>seeds</item>
+	<item>cactus</item>
+	<item>134</item>
+	<item>131</item>
+	<item>126</item>
+	<item>38</item>
+	<item>96</item>
+	<item>188</item>
+	<item>348</item>
+</itemremove>
+<block-drops>
+    <rule>
+        <fall-chance>0.75</fall-chance>
+        <land-chance>0.75</land-chance>
+   </rule>
+    <rule fall-speed="1">
+        <region>
+            <region id="everything"/>
+        </region>
+   </rule>
+</block-drops>
+<hunger>
+	<depletion>off</depletion>
+</hunger>
+<disabledamage>
+    <damage>fall</damage>
+</disabledamage>
+</map>
