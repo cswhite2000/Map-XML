@@ -150,6 +150,7 @@
             <rectangle min="60,55" max="-37,46"/>
             <rectangle min="-1,70" max="10,102"/>
             <rectangle min="13,103" max="24,70"/>
+			<rectangle min="10,71" max="13,102"/>
             <!--blue wr-->
             <rectangle min="-37,63" max="-50,38"/>
             <rectangle min="60,38" max="73,63"/>
@@ -178,7 +179,7 @@
         <region name="red-wr"/>
     </apply>
 </regions>
-<maxbuildheight>30</maxbuildheight>
+<maxbuildheight>24</maxbuildheight>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
