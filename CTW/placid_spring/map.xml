@@ -16,8 +16,8 @@
     <contributor uuid="52bb4ec5-6904-4b54-b66a-e065df3d546d" contribution="XML Help"/> <!-- jolteony -->
 </contributors>
 <teams>
-    <team color="dark red" max="16" max-overfill="16">Red</team>
-    <team color="blue" max="16" max-overfill="16">Blue</team>
+    <team color="dark red" max="16" max-overfill="18">Red</team>
+    <team color="blue" max="16" max-overfill="18">Blue</team>
 </teams>
 <kits>
     <kit name="spawn" parents="adventure">
